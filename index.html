@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marine Lighting Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <main class="container">
+        <header>
+            <h1>Marine Lighting Calculator</h1>
+            <p>Design 4 Load Lamp Calculator</p>
+        </header>
+
+<!-- ROOM DIMENSION -->
+        <section class="card">
+            <h2>Room Dimension</h2>
+          
+            <div class="input-group">
+                <label for="length">Length (m)</label>
+                <input
+                    type="number"
+                    id="length"
+                    step="0.01"
+                    min="0"
+                    placeholder="e.g. 5.00">
+            </div>
+
+            <div class="input-group">
+                <label for="width">Width (m)</label>
+                <input
+                    type="number"
+                    id="width"
+                    step="0.01"
+                    min="0"
+                    placeholder="e.g. 4.00">
+            </div>
+
+            <div class="input-group">
+                <label for="ceilingHeight">
+                    Ceiling Height (m)
+                </label>
+
+                <input
+                    type="number"
+                    id="ceilingHeight"
+                    step="0.01"
+                    min="0"
+                    placeholder="e.g. 3.00">
+            </div>
+
+            <div class="input-group">
+                <label for="workingHeight">
+                    Working Height (m)
+                </label>
+
+                <input
+                    type="number"
+                    id="workingHeight"
+                    step="0.01"
+                    min="0"
+                    placeholder="e.g. 0.80">
+            </div>
+
+        </section>
+
+<!-- ROOM CALCULATION -->
+        <section class="card">
+
+            <h2>Room Data</h2>
+
+            <div class="result-row">
+                <span>Area</span>
+                <strong id="areaResult">-- m²</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Effective Height</span>
+                <strong id="heightResult">-- m</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Room Index</span>
+                <strong id="roomIndexResult">--</strong>
+            </div>
+
+        </section>
+
+
+<!-- LAMP SELECTION -->
+        <section class="card">
+
+            <h2>Luminaire Selection</h2>
+
+            <div class="input-group">
+
+                <label for="lampFamily">
+                    LED Type
+                </label>
+
+                <select id="lampFamily">
+
+                    <option value="">
+                        -- Select LED Type --
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="lampModel">
+                    Lamp Model
+                </label>
+
+                <select id="lampModel" disabled>
+
+                    <option value="">
+                        -- Select Lamp --
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="lamp-spec">
+
+                <div>
+                    <span>Power</span>
+                    <strong id="lampPower">-- W</strong>
+                </div>
+
+                <div>
+                    <span>Flux</span>
+                    <strong id="lampFlux">-- lm</strong>
+                </div>
+
+                <div>
+                    <span>Length</span>
+                    <strong id="lampLength">-- mm</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- REFLECTION -->
+        <section class="card">
+
+            <h2>Reflection Factor</h2>
+
+            <div class="input-group">
+
+                <label for="ceilingReflection">
+                    Ceiling
+                </label>
+
+                <select id="ceilingReflection">
+
+                    <option value="80">80%</option>
+                    <option value="70" selected>70%</option>
+                    <option value="50">50%</option>
+                    <option value="30">30%</option>
+                    <option value="10">10%</option>
+                    <option value="0">0%</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="wallReflection">
+                    Wall
+                </label>
+
+                <select id="wallReflection">
+
+                    <option value="70">70%</option>
+                    <option value="50" selected>50%</option>
+                    <option value="30">30%</option>
+                    <option value="10">10%</option>
+                    <option value="0">0%</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="floorReflection">
+                    Floor
+                </label>
+
+                <select id="floorReflection">
+
+                    <option value="20" selected>20%</option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+        <!-- TARGET ILLUMINANCE -->
+        <section class="card">
+
+            <h2>Target Illuminance</h2>
+
+            <div class="input-group">
+
+                <label for="illuminance">
+                    Illuminance (lux)
+                </label>
+
+                <input
+                    type="number"
+                    id="illuminance"
+                    min="0"
+                    step="1"
+                    placeholder="e.g. 200">
+
+            </div>
+
+        </section>
+
+
+        <button id="calculateButton">
+            CALCULATE
+        </button>
+
+
+        <!-- RESULT -->
+        <section class="card result-card">
+
+            <h2>Calculation Result</h2>
+
+            <div class="result-row">
+                <span>Efficiency</span>
+                <strong id="efficiencyResult">-- %</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Dirt Factor</span>
+                <strong>75%</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Total Loss Factor</span>
+                <strong id="tlResult">-- %</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Required Light Flux</span>
+                <strong id="requiredFluxResult">-- lm</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Calculated Lamp (n)</span>
+                <strong id="lampNResult">--</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Fixed Lamp (N)</span>
+                <strong id="lampFixedResult">--</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Actual Illuminance</span>
+                <strong id="actualLuxResult">-- lux</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Total Power</span>
+                <strong id="totalPowerResult">-- W</strong>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="js/calculator.js"></script>
+
+</body>
+
+</html>
