@@ -1,10 +1,20 @@
 // 1. GET HTML ELEMENTS
-const ledTypeSelect = document.getElementById("ledType");
-const lampModelSelect = document.getElementById("lampModel");
 
-const lampPower = document.getElementById("lampPower");
-const lampFlux = document.getElementById("lampFlux");
-const lampLength = document.getElementById("lampLength");
+//LED Type Dropdown
+const ledTypeSelect 
+    = document.getElementById("ledType");
+
+//LED Model Dropdown
+const lampModelSelect 
+    = document.getElementById("lampModel");
+
+//LED Lamp Spec
+const lampPower 
+    = document.getElementById("lampPower");
+const lampFlux 
+    = document.getElementById("lampFlux");
+const lampLength 
+    = document.getElementById("lampLength");
 
 // 2. CREATE LED TYPE DROPDOWN
 const families = [...new Set(
