@@ -1,7 +1,4 @@
-// =====================================================
 // 1. GET HTML ELEMENTS
-// =====================================================
-
 const ledTypeSelect = document.getElementById("ledType");
 const lampModelSelect = document.getElementById("lampModel");
 
@@ -9,11 +6,7 @@ const lampPower = document.getElementById("lampPower");
 const lampFlux = document.getElementById("lampFlux");
 const lampLength = document.getElementById("lampLength");
 
-
-// =====================================================
 // 2. CREATE LED TYPE DROPDOWN
-// =====================================================
-
 const families = [...new Set(
     lampData.map(lamp => lamp.family)
 )];
@@ -30,10 +23,7 @@ families.forEach(family => {
 });
 
 
-// =====================================================
 // 3. LED TYPE → LAMP MODEL
-// =====================================================
-
 ledTypeSelect.addEventListener("change", function () {
 
     const selectedFamily = this.value;
@@ -46,7 +36,9 @@ ledTypeSelect.addEventListener("change", function () {
     lampLength.textContent = "-";
 
     if (!selectedFamily) {
+
         lampModelSelect.disabled = true;
+
         return;
     }
 
@@ -70,10 +62,7 @@ ledTypeSelect.addEventListener("change", function () {
 });
 
 
-// =====================================================
 // 4. LAMP MODEL → LAMP SPECIFICATION
-// =====================================================
-
 lampModelSelect.addEventListener("change", function () {
 
     const selectedId = this.value;
@@ -83,9 +72,11 @@ lampModelSelect.addEventListener("change", function () {
     );
 
     if (!selectedLamp) {
+
         lampPower.textContent = "-";
         lampFlux.textContent = "-";
         lampLength.textContent = "-";
+
         return;
     }
 
