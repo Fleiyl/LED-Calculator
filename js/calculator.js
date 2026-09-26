@@ -1,7 +1,16 @@
-console.log("Calculator loaded.");
+const ledTypeSelect = document.getElementById("ledType");
 
-console.log("Lamp Database:");
-console.log(lampData);
+const families = [...new Set(
+    lampData.map(lamp => lamp.family)
+)];
 
-console.log("Efficiency Database:");
-console.log(efficiencyData);
+families.forEach(family => {
+
+    const option = document.createElement("option");
+
+    option.value = family;
+    option.textContent = family;
+
+    ledTypeSelect.appendChild(option);
+
+});
